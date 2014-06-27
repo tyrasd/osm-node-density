@@ -1,7 +1,7 @@
 osm-node-density
 ================
 
-A visualization of OpenStreetMaps node density.
+A visualization of OpenStreetMaps node density ([read more](http://www.openstreetmap.org/user/tyr_asd/diary/22363)).
 
 [![](http://wiki.openstreetmap.org/w/images/3/37/OSM-node-density-map-HD-crop-2014.png)](http://tyrasd.github.io/osm-node-density/)
 
