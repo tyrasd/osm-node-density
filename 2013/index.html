@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OpenStreetMap node density map 2013</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" /><![endif]-->
+</head>
+<body>
+	<div id="map" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:black;"></div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+	<script>
+
+		var map = L.map('map', {maxZoom:5, minZoom:0}).setView([0,0], 2);
+
+		L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/diary/19549">Martin Raifer</a>'
+		}).addTo(map);
+
+                L.control.scale({metric:true, imperial:false}).addTo(map);
+
+	</script>
+</body>
+</html>
+

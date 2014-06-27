@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OpenStreetMap node density map 2013</title>
-	<meta charset="utf-8" />
+    <title>OpenStreetMap node density map 2014</title>
+    <meta charset="utf-8" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
-	<!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" /><![endif]-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" /><![endif]-->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+    <script src="leaflet-hash.js"></script>
 </head>
 <body>
-	<div id="map" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:black;"></div>
+    <div id="map" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:black;"></div>
 
-	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
-	<script>
+    <script>
 
-		var map = L.map('map', {maxZoom:5, minZoom:0}).setView([0,0], 2);
+        var map = L.map('map', {maxZoom:7, minZoom:0}).setView([50,8], 5);
+                var hash = new L.Hash(map);
 
-		L.tileLayer('./tiles/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/diary/19549">Martin Raifer</a>'
-		}).addTo(map);
+        L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/diary/19549">Martin Raifer</a>, <a href="http://creativecommons.org/licenses/by/3.0/">cc-by</a>'
+        }).addTo(map);
 
                 L.control.scale({metric:true, imperial:false}).addTo(map);
 
-	</script>
+    </script>
 </body>
 </html>
 
