@@ -17,7 +17,11 @@
         var map = L.map('map', {maxZoom:7, minZoom:0}).setView([50,8], 5);
         var hash = new L.Hash(map);
         var attr = 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/diary/22363">Martin Raifer</a>, <a href="http://creativecommons.org/licenses/by/3.0/">cc-by</a>';
-        var density2015 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2015/tiles/density/{z}/{x}/{y}.png', {
+        var density2014 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2014/tiles/density/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2015 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2015/tiles/density/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
@@ -31,7 +35,8 @@
         });
         L.control.layers({
             "density 2016": density2016,
-            "density 2015": density2015
+            "density 2015": density2015,
+            "density 2014": density2014
         }, {
             "locations":overlay
         }).addTo(map);
