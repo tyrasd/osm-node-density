@@ -1,4 +1,4 @@
-rudimentary scripts and instructions for how to create my osm-node-analysis visualization:
+*rudimentary scripts and instructions for how to create my osm-node-analysis visualization:*
 
 prerequisites
 -------------
