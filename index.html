@@ -25,7 +25,15 @@
             maxNativeZoom: 7,
             attribution: attr
         }),
+            diff2015 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2015/tiles/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
             density2016 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2016/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2016 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2016/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
@@ -35,7 +43,9 @@
         });
         L.control.layers({
             "density 2016": density2016,
+            "difference 2015-2016": diff2016,
             "density 2015": density2015,
+            "difference 2014-2015": diff2015,
             "density 2014": density2014
         }, {
             "locations":overlay
