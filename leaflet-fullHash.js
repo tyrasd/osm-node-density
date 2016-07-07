@@ -5,11 +5,11 @@
 			(doc_mode === undefined || doc_mode > 7);
 	})();
 
-	L.Hash = function(map) {
+	L.Hash = function(map, options) {
 		this.onHashChange = L.Util.bind(this.onHashChange, this);
 
 		if (map) {
-			this.init(map);
+			this.init(map, options);
 		}
 	};
 
@@ -18,16 +18,18 @@
 			hash = hash.substr(1);
 		}
 		var args = hash.split("/");
-		if (args.length == 3) {
+		if (args.length == 4) {
 			var zoom = parseInt(args[0], 10),
 			lat = parseFloat(args[1]),
-			lon = parseFloat(args[2]);
+			lon = parseFloat(args[2]),
+			layers = (args[3]).split(",");
 			if (isNaN(zoom) || isNaN(lat) || isNaN(lon)) {
 				return false;
 			} else {
 				return {
 					center: new L.LatLng(lat, lon),
-					zoom: zoom
+					zoom: zoom,
+					layers: layers
 				};
 			}
 		} else {
@@ -38,11 +40,24 @@
 	L.Hash.formatHash = function(map) {
 		var center = map.getCenter(),
 		    zoom = map.getZoom(),
-		    precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
+		    precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2)),
+		    layers = [];
+
+		//console.log(this.options);
+		var options = this.options;
+		//Check active layers
+		for(var key in options) {
+			if (options.hasOwnProperty(key)) {
+				if (map.hasLayer(options[key])) {
+					layers.push(key);
+				};
+			};
+		};
 
 		return "#" + [zoom,
 			center.lat.toFixed(precision),
-			center.lng.toFixed(precision)
+			center.lng.toFixed(precision),
+			layers.join(",")
 		].join("/");
 	},
 
@@ -53,8 +68,9 @@
 		parseHash: L.Hash.parseHash,
 		formatHash: L.Hash.formatHash,
 
-		init: function(map) {
+		init: function(map, options) {
 			this.map = map;
+			L.Util.setOptions(this, options);
 
 			// reset the hash
 			this.lastHash = null;
@@ -103,6 +119,18 @@
 				this.movingMap = true;
 
 				this.map.setView(parsed.center, parsed.zoom);
+				var layers = parsed.layers,
+					options = this.options,
+					that = this;
+				//Add/remove layers
+				this.map.eachLayer(function(layer) {
+					that.map.removeLayer(layer);
+				});
+
+				layers.forEach(function(element, index, array) {
+					//console.log(options[element]);
+					that.map.addLayer(options[element]);
+				});			
 
 				this.movingMap = false;
 			} else {
@@ -128,7 +156,7 @@
 		isListening: false,
 		hashChangeInterval: null,
 		startListening: function() {
-			this.map.on("moveend", this.onMapMove, this);
+			this.map.on("moveend layeradd layerremove", this.onMapMove, this);
 
 			if (HAS_HASHCHANGE) {
 				L.DomEvent.addListener(window, "hashchange", this.onHashChange);
@@ -140,7 +168,7 @@
 		},
 
 		stopListening: function() {
-			this.map.off("moveend", this.onMapMove, this);
+			this.map.off("moveend layeradd layerremove", this.onMapMove, this);
 
 			if (HAS_HASHCHANGE) {
 				L.DomEvent.removeListener(window, "hashchange", this.onHashChange);
@@ -148,13 +176,23 @@
 				clearInterval(this.hashChangeInterval);
 			}
 			this.isListening = false;
+		},
+
+		_keyByValue: function(obj, value) {
+			for(var key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					if (obj[key] === value) {
+						return key;
+					} else { return null; };
+				};
+			};
 		}
 	};
-	L.hash = function(map) {
-		return new L.Hash(map);
+	L.hash = function(map, options) {
+		return new L.Hash(map, options);
 	};
 	L.Map.prototype.addHash = function() {
-		this._hash = L.hash(this);
+		this._hash = L.hash(this, this.options);
 	};
 	L.Map.prototype.removeHash = function() {
 		this._hash.removeFrom();

@@ -6,16 +6,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-    <script src="leaflet-hash.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="leaflet-fullHash.js"></script>
 </head>
 <body>
     <div id="map" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:black;"></div>
 
     <script>
         var map = L.map('map', {maxZoom:7, minZoom:0}).setView([50,8], 5);
-        var hash = new L.Hash(map);
         var attr = 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/">Martin Raifer</a>, <a href="http://creativecommons.org/licenses/by/3.0/">cc-by</a>';
         var density2014 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2014/tiles/density/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
@@ -52,6 +51,14 @@
         }).addTo(map);
         density2016.addTo(map);
         overlay.addTo(map);
+        var hash = new L.Hash(map, {
+            "2016": density2016,
+            "2015-2016": diff2016,
+            "2015": density2015,
+            "2014-2015": diff2015,
+            "2014": density2014,
+            "places":overlay
+        });
         L.control.scale({metric:true, imperial:false}).addTo(map);
     </script>
 </body>
