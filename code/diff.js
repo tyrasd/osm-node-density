@@ -17,8 +17,8 @@ liner.on('readable', function () {
               y = line[1],
               val = +line[2]
           if (!tiles[x]) tiles[x] = {}
-          if (!tiles[x][y]) tiles[x][y] = 0
-          tiles[x][y] += val
+          if (!tiles[x][y]) tiles[x][y] = val
+          else tiles[x][y] += val
      }
 })
 liner.on('end', function() {
@@ -36,14 +36,14 @@ liner.on('end', function() {
               y = line[1],
               val = +line[2]
           if (!tiles[x]) tiles[x] = {}
-          if (!tiles[x][y]) tiles[x][y] = 0
-          tiles[x][y] -= val
+          if (!tiles[x][y]) tiles[x][y] = -val
+          else tiles[x][y] -= val
     }
   })
   refliner.on("end", function() {
       for (var x in tiles)
           for (var y in tiles[x])
-              console.log(x,y,tiles[x][y]);
+              if (tiles[x][y] != 0) console.log(x,y,tiles[x][y]);
   })
 })
 console.error(dbg++);

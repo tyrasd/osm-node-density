@@ -19,14 +19,14 @@ liner.on('readable', function () {
           x = Math.floor(x/2)
           y = Math.floor(y/2)
           if (!tiles[x]) tiles[x] = {}
-          if (!tiles[x][y]) tiles[x][y] = 0
-          tiles[x][y] += val
+          if (!tiles[x][y]) tiles[x][y] = val
+          else tiles[x][y] += val
      }
 })
 liner.on('end', function() {
   console.error(dbg++);
       for (var x in tiles)
           for (var y in tiles[x])
-              console.log(x,y,tiles[x][y]);
+              if (tiles[x][y] != 0) console.log(x,y,tiles[x][y]);
 })
 console.error(dbg++);
