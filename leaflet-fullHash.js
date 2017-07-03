@@ -128,7 +128,9 @@
 						that.map.removeLayer(layer);
 					});
 					layers.forEach(function(element, index, array) {
-						that.map.addLayer(options[element]);
+						setTimeout(function() {
+							that.map.addLayer(options[element]);
+						}, index*10);
 					});
 				}
 
