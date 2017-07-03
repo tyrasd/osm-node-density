@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
-    <script src='https://unpkg.com/leaflet.gridlayer.fadeout@0.1.0/Leaflet.GridLayer.FadeOut.js'></script>
     <script src="leaflet-fullHash.js"></script>
 </head>
 <body>
@@ -73,6 +72,15 @@
             "places":overlay
         });
         L.control.scale({metric:true, imperial:false}).addTo(map);
+    </script>
+
+    <script>
+        setTimeout(function() {
+            var script = document.createElement('script');
+            script.asnyc = 'async';
+            script.src = 'https://unpkg.com/leaflet.gridlayer.fadeout@0.1.0/Leaflet.GridLayer.FadeOut.js';
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }, 2000);
     </script>
 </body>
 </html>
