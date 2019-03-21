@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OpenStreetMap node density map 2017</title>
+    <title>OpenStreetMap node density</title>
     <meta charset="utf-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     <div id="map" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:black;"></div>
 
     <script>
-        var map = L.map('map', {maxZoom:7, minZoom:0}).setView([38,132], 5);
+        var map = L.map('map', {maxZoom:7, minZoom:0}).setView([38,13], 2);
         var attr = 'data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="http://www.openstreetmap.org/user/tyr_asd/">Martin Raifer</a>, <a href="http://creativecommons.org/licenses/by/3.0/">cc-by</a>';
         var density2014 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2014/tiles/density/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
@@ -44,11 +44,16 @@
             maxNativeZoom: 7,
             attribution: attr
         }),
+            density2018 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2018/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
             overlay = L.tileLayer('//{s}.tiles.mapbox.com/v4/openstreetmap.map-inh76ba2/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidHlyIiwiYSI6ImNpcTdyZWQwbjAwMmhoeW5zbXc1enJ3cWoifQ.094oUYlT0wZbf2Q2wM-QQQ', {
             opacity: 0.75,
             attribution: 'overlay &copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
         });
         L.control.layers({
+            "density 2018": density2018,
             "density 2017": density2017,
             "difference 2016-2017": diff2017,
             "density 2016": density2016,
@@ -59,10 +64,11 @@
         }, {
             "locations":overlay
         }).addTo(map);
-        density2017.addTo(map);
+        density2018.addTo(map);
         overlay.addTo(map);
         var hash = new L.Hash(map, {
-            "latest": density2017,
+            "latest": density2018,
+            "2017": density2017,
             "2016-2017": diff2017,
             "2016": density2016,
             "2015-2016": diff2016,
