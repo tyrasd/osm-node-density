@@ -48,6 +48,10 @@
             maxNativeZoom: 7,
             attribution: attr
         }),
+            diff2018 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2018/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
             density2019 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2019/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
@@ -74,6 +78,7 @@
             "density 2019": density2019,
             "difference 2018-2019": diff2019,
             "density 2018": density2018,
+            "difference 2017-2018": diff2018,
             "density 2017": density2017,
             "difference 2016-2017": diff2017,
             "density 2016": density2016,
@@ -93,6 +98,7 @@
             "2019": density2019,
             "2018-2019": diff2019,
             "2018": density2018,
+            "2017-2018": diff2018,
             "2017": density2017,
             "2016-2017": diff2017,
             "2016": density2016,
