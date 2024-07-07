@@ -92,11 +92,21 @@
             maxNativeZoom: 7,
             attribution: attr
         }),
+            density2024 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2024/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2024 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2024/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
             overlay = L.tileLayer('https://api.mapbox.com/styles/v1/openstreetmap/ckasmteyi1tda1ipfis6wqhuq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHlyIiwiYSI6ImNpcTdyZWQwbjAwMmhoeW5zbXc1enJ3cWoifQ.094oUYlT0wZbf2Q2wM-QQQ', {
             opacity: 0.75,
             attribution: 'overlay &copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
         });
         L.control.layers({
+            "density 2024": density2024,
+            "difference 2023-2024": diff2024,
             "density 2023": density2023,
             "difference 2022-2023": diff2023,
             "density 2022": density2022,
@@ -119,10 +129,12 @@
         }, {
             "locations":overlay
         }).addTo(map);
-        density2023.addTo(map);
+        density2024.addTo(map);
         overlay.addTo(map);
         var hash = new L.Hash(map, {
-            "latest": density2023,
+            "latest": density2024,
+            "2023-2024": diff2024,
+            "2023": density2023,
             "2022-2023": diff2023,
             "2022": density2022,
             "2021-2022": diff2022,
