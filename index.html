@@ -16,7 +16,51 @@
     <script>
         var map = L.map('map', {maxZoom:7, minZoom:0}).setView([38,13], 2);
         var attr = 'data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="https://www.openstreetmap.org/user/tyr_asd/">Martin Raifer</a>, <a href="https://creativecommons.org/licenses/by/3.0/">cc-by</a>';
-        var density2014 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2014/tiles/density/{z}/{x}/{y}.png', {
+        var density2007 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2007/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2008 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2008/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2008 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2008/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2009 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2009/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2009 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2009/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2010 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2010/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2010 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2010/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2011 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2011/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2011 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2011/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2012 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2012/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            diff2012 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2012/diff/{z}/{x}/{y}.png', {
+            maxNativeZoom: 7,
+            attribution: attr
+        }),
+            density2014 = L.tileLayer('https://tyrasd.github.io/osm-node-density/2014/tiles/density/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
@@ -125,7 +169,18 @@
             "difference 2015-2016": diff2016,
             "density 2015": density2015,
             "difference 2014-2015": diff2015,
-            "density 2014": density2014
+            "density 2014": density2014,
+            "density 2012": density2012,
+            "difference 2011-2012": diff2012,
+            "density 2011": density2011,
+            "difference 2010-2011": diff2011,
+            "density 2010": density2010,
+            "difference 2009-2010": diff2010,
+            "density 2009": density2009,
+            "difference 2008-2009": diff2009,
+            "density 2008": density2008,
+            "difference 2007-2008": diff2008,
+            "density 2007": density2007
         }, {
             "locations":overlay
         }).addTo(map);
@@ -153,6 +208,17 @@
             "2015": density2015,
             "2014-2015": diff2015,
             "2014": density2014,
+            "2012": density2012,
+            "2011-2012": diff2012,
+            "2011": density2011,
+            "2010-2011": diff2011,
+            "2010": density2010,
+            "2009-2010": diff2010,
+            "2009": density2009,
+            "2008-2009": diff2009,
+            "2008": density2008,
+            "2007-2008": diff2008,
+            "2007": density2007,
             "places":overlay
         });
         L.control.scale({metric:true, imperial:false}).addTo(map);
