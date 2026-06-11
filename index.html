@@ -16,47 +16,47 @@
     <script>
         var map = L.map('map', {maxZoom:7, minZoom:0}).setView([38,13], 2);
         var attr = 'data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://openstreetmap.org/copyright">ODbL</a>, Imagery © <a href="https://www.openstreetmap.org/user/tyr_asd/">Martin Raifer</a>, <a href="https://creativecommons.org/licenses/by/3.0/">cc-by</a>';
-        var density2007 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2007/{z}/{x}/{y}.png', {
+        var density2007 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2007/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2008 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2008/{z}/{x}/{y}.png', {
+            density2008 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2008/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2008 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2008/diff/{z}/{x}/{y}.png', {
+            diff2008 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2008/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2009 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2009/{z}/{x}/{y}.png', {
+            density2009 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2009/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2009 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2009/diff/{z}/{x}/{y}.png', {
+            diff2009 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2009/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2010 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2010/{z}/{x}/{y}.png', {
+            density2010 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2010/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2010 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2010/diff/{z}/{x}/{y}.png', {
+            diff2010 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2010/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2011 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2011/{z}/{x}/{y}.png', {
+            density2011 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2011/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2011 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2011/diff/{z}/{x}/{y}.png', {
+            diff2011 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2011/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2012 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2012/{z}/{x}/{y}.png', {
+            density2012 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2012/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2012 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2012/diff/{z}/{x}/{y}.png', {
+            diff2012 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2012/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
@@ -72,91 +72,91 @@
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2016 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2016/{z}/{x}/{y}.png', {
+            density2016 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2016/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2016 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2016/diff/{z}/{x}/{y}.png', {
+            diff2016 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2016/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2017 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2017/{z}/{x}/{y}.png', {
+            density2017 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2017/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2017 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2017/diff/{z}/{x}/{y}.png', {
+            diff2017 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2017/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2018 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2018/{z}/{x}/{y}.png', {
+            density2018 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2018/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2018 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2018/diff/{z}/{x}/{y}.png', {
+            diff2018 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2018/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2019 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2019/{z}/{x}/{y}.png', {
+            density2019 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2019/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2019 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2019/diff/{z}/{x}/{y}.png', {
+            diff2019 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2019/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2020 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2020/{z}/{x}/{y}.png', {
+            density2020 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2020/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2020 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2020/diff/{z}/{x}/{y}.png', {
+            diff2020 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2020/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2021 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2021/{z}/{x}/{y}.png', {
+            density2021 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2021/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2021 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2021/diff/{z}/{x}/{y}.png', {
+            diff2021 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2021/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2022 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2022/{z}/{x}/{y}.png', {
+            density2022 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2022/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2022 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2022/diff/{z}/{x}/{y}.png', {
+            diff2022 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2022/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2023 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2023/{z}/{x}/{y}.png', {
+            density2023 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2023/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2023 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2023/diff/{z}/{x}/{y}.png', {
+            diff2023 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2023/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2024 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2024/{z}/{x}/{y}.png', {
+            density2024 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2024/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2024 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2024/diff/{z}/{x}/{y}.png', {
+            diff2024 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2024/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2025 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2025/{z}/{x}/{y}.png', {
+            density2025 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2025/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2025 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2025/diff/{z}/{x}/{y}.png', {
+            diff2025 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2025/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            density2026 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2026/{z}/{x}/{y}.png', {
+            density2026 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2026/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
-            diff2026 = L.tileLayer('https://s3-eu-west-1.amazonaws.com/osm-node-density/2026/diff/{z}/{x}/{y}.png', {
+            diff2026 = L.tileLayer('https://osm-node-density.nbg1.your-objectstorage.com/2026/diff/{z}/{x}/{y}.png', {
             maxNativeZoom: 7,
             attribution: attr
         }),
