@@ -23,8 +23,8 @@ run `process.js` to generate the density data at the highest zoom level:
 
 run `downscale.js` to generate lower zoom levels:
 
-    node --max-old-space-size=55000 downscale.js data.<<zoom>>.txt > data.<<zoom-1>>.txt
-
+    #node --max-old-space-size=55000 downscale.js data.<<zoom>>.txt > data.<<zoom-1>>.txt
+    for i in {15..8}; do node --max-old-space-size=55000 downscale.js ./data/2026/data.$i.txt > ./data/2026/data.$((i-1)).txt; done
 
 calculate delta between two data sets
 -------------------------------------
@@ -41,7 +41,9 @@ plot the results
 
 use `plot*.gp` with gnuplot to plot one large png file for each zoom level:
 
-    gnuplot plot.gp # or plot-diff.gp
+    #gnuplot plot.gp # or plot-diff.gp
+    for i in {8..15}; do echo $i; gnuplot -e "zoom=$i" plot.gp; done
+    for i in {8..15}; do echo $i; gnuplot -e "zoom=$i" plot-diff.gp; done
 
 adjust the filenames and paths in the plot-script(s) first and adjust the zoom level for each zoom level.
 
@@ -51,13 +53,19 @@ make tiles
 
 make subdirectories for each output zoom level (note that `*.15.txt` above corresponds to zoom level 7 in the output):
 
-    for i in {0..7};do mkdir $i; done
+    #for i in {0..7};do mkdir $i; done
 
 in each subdirectory: create `2^<subdir-name>` sub-subdirectories, e.g. for output zoom 7:
 
-    for i in {0..127};do mkdir $i; done
+    #for i in {0..127};do mkdir $i; done
+    for i in {0..7};do mkdir $i; for j in {0..$((2**i-1))};do mkdir $i/$j; done; done
 
 in each subdirectory: use imagemagick to split the png file into 256x256 tiles, e.g. for zoom 7:
 
-    convert <...15.png> -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "%[filename:tile].png"
+    #convert <...15.png> -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "%[filename:tile].png"
+    for i in {8..15}; do echo $i; convert ./plots/2026/plot.$i.png -crop 256x256 -set filename:tile "%[fx:page.x/256]/%[fx:page.y/256]" +repage +adjoin "./2026/$((i-8))/%[filename:tile].png"; done
 
+
+optimize file sizes
+
+    find . -name '*.png' | parallel optipng

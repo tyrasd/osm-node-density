@@ -12,7 +12,7 @@ set bmargin at screen 1
 
 set palette rgbformulae 34,35,36
 
-zoom = "16"
+#zoom = "16"
 
 width = 2**(zoom)
 
@@ -25,8 +25,8 @@ set object rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#000000" behind
 
 # set terminal wxt size 512,512
 # set terminal png size width/4,width/4
-set terminal png size width,width
-set output ("/mnt/data/2016.".zoom.".png")
+set terminal png size width,width notruecolor
+set output ("./plots/2026/plot.".zoom.".png")
 
-plot ('/mnt/data/2016.'.zoom.'.txt') using ($1):(width-1-$2):(log($3)) with dots palette
+plot ('./data/2026/data.'.zoom.'.txt') using ($1):(width-1-$2):(log($3)) with dots palette
 
